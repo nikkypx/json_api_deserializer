@@ -1,6 +1,6 @@
 # Json Api Deserializer
 
-> This is the deserializer code from [ActiveModelSerializers](https://github.com/rails-api/active_model_serializers) for the JSON API spec
+> NOTE: This extracted from [ActiveModelSerializers](https://github.com/rails-api/active_model_serializers) for the JSON API spec
 
 ## Installation
 
