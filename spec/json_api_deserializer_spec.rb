@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe JsonApiDeserializer do
   let(:hash) do
     {
@@ -51,14 +53,12 @@ RSpec.describe JsonApiDeserializer do
   describe '::parse' do
     it 'parses the attributes out of the hash' do
       expect(JsonApiDeserializer.parse(hash)).to eq(
-        {
-          id: 'zorglub',
-          title: 'Ember Hamster',
-          src: 'http://example.com/images/productivity.png',
-          author_id: nil,
-          photographer_id: '9',
-          comment_ids: %w(1 2)
-        }
+        id: 'zorglub',
+        title: 'Ember Hamster',
+        src: 'http://example.com/images/productivity.png',
+        author_id: nil,
+        photographer_id: '9',
+        comment_ids: %w[1 2]
       )
     end
 
@@ -79,7 +79,7 @@ RSpec.describe JsonApiDeserializer do
 
     it 'can filter fields with only' do
       parsed_hash = JsonApiDeserializer.parse!(
-        hash, only: [:id, :title, :author]
+        hash, only: %i[id title author]
       )
 
       expected = {
@@ -92,13 +92,13 @@ RSpec.describe JsonApiDeserializer do
 
     it 'can filter fields with except' do
       parsed_hash = JsonApiDeserializer.parse!(
-        hash, except: [:id, :title, :author]
+        hash, except: %i[id title author]
       )
 
       expected = {
         src: 'http://example.com/images/productivity.png',
         photographer_id: '9',
-        comment_ids: %w(1 2)
+        comment_ids: %w[1 2]
       }
 
       expect(parsed_hash).to eq(expected)
@@ -115,7 +115,7 @@ RSpec.describe JsonApiDeserializer do
         src: 'http://example.com/images/productivity.png',
         user_id: nil,
         photographer_id: '9',
-        comment_ids: %w(1 2)
+        comment_ids: %w[1 2]
       }
 
       expect(parsed_hash).to eq(expected)
@@ -133,7 +133,7 @@ RSpec.describe JsonApiDeserializer do
         author_id: nil,
         photographer_id: '9',
         photographer_type: 'Person',
-        comment_ids: %w(1 2)
+        comment_ids: %w[1 2]
       }
 
       expect(parsed_hash).to eq(expected)

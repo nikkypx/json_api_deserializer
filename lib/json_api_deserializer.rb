@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'json_api_deserializer/version'
 require 'active_support/all'
 require 'case_transform'
@@ -72,7 +74,7 @@ module JsonApiDeserializer
   #
   def parse!(document, options = {})
     parse(document, options) do |invalid_payload, reason|
-      fail InvalidDocument, "Invalid payload (#{reason}): #{invalid_payload}"
+      raise InvalidDocument, "Invalid payload (#{reason}): #{invalid_payload}"
     end
   end
 
