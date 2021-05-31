@@ -131,7 +131,9 @@ module JsonApiDeserializer
     end
 
     relationships.each do |(key, value)|
-      yield payload, { data: { relationships: { key => 'Expected hash with :data key' } } } unless value.is_a?(Hash) && value.key?('data')
+      unless value.is_a?(Hash) && value.key?('data')
+        yield payload, { data: { relationships: { key => 'Expected hash with :data key' } } }
+      end
     end
   end
 

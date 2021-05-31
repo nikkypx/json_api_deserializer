@@ -20,6 +20,6 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_development_dependency 'bundler'
-  spec.add_dependency 'activesupport'
-  spec.add_dependency 'case_transform'
+  spec.add_dependency 'activesupport', '~> 5.2.4.3'
+  spec.add_dependency 'case_transform', '~> 0.2'
 end
